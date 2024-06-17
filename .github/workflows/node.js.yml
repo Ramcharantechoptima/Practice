@@ -8,11 +8,12 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
@@ -29,14 +30,9 @@ jobs:
 
     - run: npm test
 
-    - name: Deploy to GitHub Pages
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Deploy with gh-pages
       run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git remote set-url origin https://x-access-token:${ACCESS_TOKEN}@github.com/${{ github.repository }}.git
+        git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
         npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-      shell: pwsh
-
-
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

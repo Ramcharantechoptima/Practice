@@ -8,12 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: window-latest
 
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
@@ -30,12 +29,19 @@ jobs:
 
     - run: npm test
 
-    - name: Deploy with gh-pages
+    - name: Check build directory
+      run: ls -la build
+
+    - name: Deploy to GitHub Pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
-        npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
+        git fetch origin
+        git checkout -B gh-pages origin/gh-pages
+        cp -r build/* .
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push origin gh-pages --force

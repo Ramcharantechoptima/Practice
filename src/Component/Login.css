@@ -1,0 +1,104 @@
+#loginContent {
+    display: grid;
+    height: 650px;
+    width: 100%;
+    background-color: white;
+    border:1px solid light lightgray;
+    /* border-radius: 20px; */
+    justify-items: center;
+    font-family: roboto,sans-serif;
+    grid-template-rows: 1fr 10fr;
+    /* justify-content: space-between; */
+    /*  */
+}
+ 
+#divForm{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 0.7fr 1fr 0.7fr 0.8fr 1.5fr;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+    width: 600px;
+    height: 520px;
+}
+ 
+#loginBtn{
+    width: 70px;
+    height: 25px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid lightgray;
+    justify-self: right;
+    align-self: self-end;
+    margin-right: 200px;
+}
+ 
+.loginLabel{
+    height: 35px;
+    margin-right: 168px;
+    font-size: 18px;
+    align-content: end;
+ 
+}
+ 
+.loginInput{
+    height: 62px;
+    border-radius: 50px;
+    width: 300px;
+    border: 1px solid lightgray;
+    padding-left: 25px;
+    font-size: 15px;
+}
+ 
+#btnReset{
+    height: 39px;
+    width: 75px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    font-size: 14px;
+}
+#btnLoginSubmit{
+    height: 39px;
+    width: 75px;
+    background-color: #522653;
+    color: white;
+    border-radius: 50px;
+    font-size: 14px;
+    border: none;
+}
+ 
+#divLoginBtns{
+    width: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+ 
+.head {
+    margin: 0px;
+}
+ 
+#forgot{
+    font-size: 12px;
+    font-weight: 900;
+    color: #522653;
+    margin-bottom: 24px;
+    padding-left: 160px;
+    text-decoration: underline;
+ 
+   
+ 
+}
+ 
+.greyText{
+    font-size: 12px;
+    color: grey;
+}
+.welcomemessage{
+    color: #522653;
+    font-weight: 600;
+    font-size: 28px;    
+    padding-top: 45px !important;
+}
